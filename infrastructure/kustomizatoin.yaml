@@ -1,0 +1,4 @@
+resources:
+  - crossplane/install.yaml
+  - crossplane/aws-provider.yaml
+  - crossplane/provider-config.yaml

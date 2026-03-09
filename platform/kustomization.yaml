@@ -1,0 +1,4 @@
+resources:
+  - cilium/install.yaml
+  - kyverno/install.yaml
+  - vault/install.yaml
