@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crossplane-system
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: crossplane
+  namespace: crossplane-system
+spec:
+  repo: https://charts.crossplane.io/stable
+  chart: crossplane
+  targetNamespace: crossplane-system
+  version: 1.15.0

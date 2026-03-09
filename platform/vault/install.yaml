@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vault
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: vault
+  namespace: vault
+spec:
+  repo: https://helm.releases.hashicorp.com
+  chart: vault
+  targetNamespace: vault
+  version: 0.27.0

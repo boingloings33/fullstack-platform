@@ -1,22 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
+  name: applications
   namespace: argocd
-
 spec:
   project: default
-
   source:
     repoURL: https://github.com/boingloings33/fullstack-platform.git
-    targetRevision: HEAD
-    path: apps/nginx
-
+    targetRevision: main
+    path: apps
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: {}
