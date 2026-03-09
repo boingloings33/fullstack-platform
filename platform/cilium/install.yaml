@@ -1,15 +1,20 @@
-apiVersion: v1
-kind: Namespace
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: cilium
----
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
-metadata:
-  name: cilium
-  namespace: kube-system
+  namespace: argocd
 spec:
-  repo: https://helm.cilium.io/
-  chart: cilium
-  targetNamespace: kube-system
-  version: 1.15.6
+  project: default
+  source:
+    repoURL: https://helm.cilium.io/
+    chart: cilium
+    targetRevision: 1.15.6
+    helm:
+      releaseName: cilium
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
